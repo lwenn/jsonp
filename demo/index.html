@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+<p>每次请求的回调函数名如下: </p>
+<script src="../jsonp.js"></script>
+<script>
+	// 多次调用访问同一个接口地址，生成的 callback 也是不同的
+	for (var i = 0; i < 5; i++) {
+	    Jsonp.get("http://127.0.0.1:4002", {id: i}, function(rsp) {
+	        var elem = document.createElement("p");
+	        elem.innerText = rsp.name;
+	        document.body.appendChild(elem);
+	    });
+	}
+</script>
+</body>
+</html>
